@@ -1,6 +1,6 @@
 /* ==========================================================================
    שילינגר תכנון פיננסי — מערכת עיצוב
-   טיפוגרפיה: Noto Serif Hebrew (כותרות) + Assistant (גוף)
+   טיפוגרפיה: David Libre (כותרות) + Assistant (גוף)
    ========================================================================== */
 
 :root{
@@ -33,7 +33,7 @@
   --container:1180px;
   --measure:720px;
 
-  --ff-display:"Noto Serif Hebrew","Frank Ruhl Libre",Georgia,serif;
+  --ff-display:"David Libre","Frank Ruhl Libre",Georgia,serif;
   --ff-body:"Assistant","Heebo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
 }
 
@@ -58,9 +58,9 @@ a{color:inherit;text-decoration:none}
 /* Typography -------------------------------------------------------------- */
 h1,h2,h3,h4{
   font-family:var(--ff-display);font-weight:700;margin:0;
-  line-height:1.16;letter-spacing:-.015em;
+  line-height:1.2;letter-spacing:-.005em;
 }
-h1{font-size:clamp(36px,5.6vw,64px);font-weight:800}
+h1{font-size:clamp(35px,5.4vw,62px);font-weight:700;letter-spacing:-.005em}
 h2{font-size:clamp(29px,3.9vw,46px)}
 h3{font-size:clamp(20px,2.1vw,25px)}
 h4{font-size:19px}
@@ -171,7 +171,7 @@ strong{font-weight:600}
 }
 .hero__content{max-width:660px}
 .hero h1{color:var(--white)}
-.hero h1 .accent{color:var(--gold-light);display:block;font-weight:400;font-style:italic}
+.hero h1 .accent{color:var(--gold-light);display:block;font-weight:400}
 .hero__sub{
   margin-top:26px;font-size:clamp(17px,1.9vw,20px);font-weight:300;
   line-height:1.8;color:var(--text-on-dark-soft);max-width:570px;
@@ -309,7 +309,7 @@ strong{font-weight:600}
 .section--cream .reasons__item,.section--white .reasons__item,
 .section--cream2 .reasons__item{border-top-color:var(--line)}
 .reasons__n{
-  font-family:var(--ff-display);font-size:34px;font-weight:800;line-height:1;
+  font-family:var(--ff-display);font-size:34px;font-weight:700;line-height:1;
   color:var(--gold);opacity:.55;flex-shrink:0;min-width:44px;
 }
 .reasons__item h3{font-size:20px;margin-bottom:6px}
@@ -323,7 +323,7 @@ strong{font-weight:600}
 }
 .pullquote p{
   font-family:var(--ff-display);font-size:clamp(24px,3.3vw,38px);
-  font-weight:400;font-style:italic;line-height:1.4;color:var(--white);
+  font-weight:400;line-height:1.45;color:var(--white);
 }
 .section--cream .pullquote p,.section--white .pullquote p,
 .section--cream2 .pullquote p{color:var(--navy)}
@@ -343,7 +343,7 @@ strong{font-weight:600}
 }
 .figures > div:first-child{border-inline-start:0}
 .figures__n{
-  font-family:var(--ff-display);font-size:clamp(42px,6vw,64px);font-weight:800;
+  font-family:var(--ff-display);font-size:clamp(42px,6vw,64px);font-weight:700;
   line-height:1;color:var(--gold-light);
 }
 .figures__l{margin-top:10px;font-size:15px;font-weight:400;color:var(--text-on-dark-soft)}
@@ -395,7 +395,7 @@ strong{font-weight:600}
 }
 .svc__item::before{
   content:attr(data-n);position:absolute;inset-inline-end:14px;top:-10px;
-  font-family:var(--ff-display);font-size:110px;font-weight:800;
+  font-family:var(--ff-display);font-size:110px;font-weight:700;
   color:var(--gold);opacity:.08;line-height:1;pointer-events:none;
 }
 .svc__item:hover{background:var(--cream)}
