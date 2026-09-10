@@ -73,26 +73,30 @@
 
 
 <section class="tree" id="approach" aria-labelledby="tree-title">
-  <div class="tree__intro container">
-    <div class="shead shead--center reveal">
-      <span class="eyebrow">הגישה</span>
-      <h2 id="tree-title">מה שצומח לאט, עומד חזק.</h2>
-      <hr class="rule">
-    </div>
-  </div>
-
   <div class="tree__scroll">
     <div class="tree__sticky">
-      <div class="tree__inner">
-        <div class="tree__stage" aria-hidden="true">
-          <svg class="tree__ring" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="97" />
-          </svg>
-          <div class="tree__mask"><img src="assets/img/brand/tree.png" alt=""></div>
-          <span class="tree__ground"></span>
-        </div>
+      <div class="tree__card">
 
-        <div class="tree__panels">
+        <nav class="tree__dots" aria-label="שלבי הגישה">
+        <button class="tree__dot is-on" type="button" data-go="0" aria-label="שורשים"><span></span></button>
+        <button class="tree__dot" type="button" data-go="1" aria-label="גזע"><span></span></button>
+        <button class="tree__dot" type="button" data-go="2" aria-label="ענפים"><span></span></button>
+        <button class="tree__dot" type="button" data-go="3" aria-label="זמן"><span></span></button>
+        </nav>
+
+        <div class="tree__body">
+          <div class="tree__stage" aria-hidden="true">
+            <svg class="tree__ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="97"/></svg>
+            <div class="tree__mask"><img src="assets/img/brand/tree.png" alt=""></div>
+            <span class="tree__ground"></span>
+          </div>
+
+          <div class="tree__text">
+            <span class="eyebrow">הגישה</span>
+            <h2 id="tree-title">מה שצומח לאט, עומד חזק.</h2>
+            <hr class="rule">
+
+            <div class="tree__panels">
           <article class="tree__panel is-on">
             <span class="tree__step">שורשים</span>
             <h3>קודם מבינים על מה עומדים.</h3>
@@ -113,7 +117,17 @@
             <h3>עץ לא גדל בשבוע.</h3>
             <p>גם הון לא. הליווי נמשך לאורך שנים ומתעדכן עם השוק ועם החיים — בלי למהר, ובלי להיבהל.</p>
           </article>
+            </div>
+
+            <nav class="tree__marks" aria-label="מעבר בין השלבים">
+        <button class="tree__mark is-on" type="button" data-go="0">שורשים</button>
+        <button class="tree__mark" type="button" data-go="1">גזע</button>
+        <button class="tree__mark" type="button" data-go="2">ענפים</button>
+        <button class="tree__mark" type="button" data-go="3">זמן</button>
+            </nav>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
