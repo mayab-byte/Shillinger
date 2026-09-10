@@ -96,12 +96,20 @@ strong{font-weight:600}
 .section--navy h1,.section--navy h2,.section--navy h3,.section--navy h4,
 .section--navy-deep h1,.section--navy-deep h2,.section--navy-deep h3,.section--navy-deep h4{color:var(--white)}
 
-/* סמל העץ כווטרמארק עדין */
-.section--navy::before,.section--navy-deep::before{
-  content:"";position:absolute;inset-inline-end:-90px;top:-70px;
-  width:420px;height:420px;pointer-events:none;
+/* סמל העץ כווטרמארק — פעם אחת בלבד, בעמוד הבית, עם תזוזה עדינה בגלילה */
+.section--wm::before{
+  content:"";position:absolute;inset-inline-end:-110px;top:-90px;
+  width:440px;height:440px;pointer-events:none;
   background:url("../img/brand/icon.png") no-repeat center/contain;
-  opacity:.06;filter:brightness(2.4) saturate(0);
+  opacity:.055;filter:brightness(2.4) saturate(0);
+  transform:translate3d(0,var(--wm,0px),0) rotate(calc(var(--wm,0px) * 0.02));
+  will-change:transform;
+}
+@media (prefers-reduced-motion:reduce){
+  .section--wm::before{transform:none}
+}
+@media (max-width:720px){
+  .section--wm::before{width:260px;height:260px;inset-inline-end:-70px;top:-50px}
 }
 
 /* Header ------------------------------------------------------------------ */
@@ -465,7 +473,8 @@ strong{font-weight:600}
 .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
 .svc__item{
   position:relative;background:var(--white);padding:44px 34px 38px;
-  overflow:hidden;transition:background .55s ease;
+  overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);
+  transition:transform .5s cubic-bezier(.4,0,.2,1),box-shadow .5s cubic-bezier(.4,0,.2,1);
 }
 .svc__item:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
 .svc__item h3{margin-bottom:14px;position:relative}
@@ -684,8 +693,9 @@ strong{font-weight:600}
 
 /* — א. כרטיסי שירות עם תמונה בראש (רפרנס 1) — */
 .svc__media{
-  margin:-46px -36px 26px;height:210px;overflow:hidden;
-  border-radius:var(--radius) var(--radius) 0 0;
+  position:relative;z-index:0;
+  margin:-44px -34px 26px;height:210px;overflow:hidden;
+  border-start-start-radius:var(--radius);border-start-end-radius:var(--radius);
 }
 .svc__media img{
   width:100%;height:100%;object-fit:cover;
@@ -702,94 +712,107 @@ strong{font-weight:600}
 
 /* — ב. תמונה מלאה עם כרטיס ממוספר צף (רפרנס 3 — Trove) — */
 .overlay-split{
-  display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;
-  min-height:min(84vh,700px);
+  display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch;
 }
-.overlay-split__media{position:relative;overflow:hidden}
+.overlay-split__media{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;   /* מרכוז הכרטיס */
+  padding:70px 40px;min-height:640px;
+}
 .overlay-split__media img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center;
+}
+.overlay-split__media::after{
+  content:"";position:absolute;inset:0;background:rgba(9,21,40,.14);
 }
 .overlay-split__card{
-  position:relative;z-index:2;align-self:center;justify-self:center;
-  width:min(430px,86%);margin:44px 0;
+  position:relative;z-index:2;width:100%;max-width:460px;
   background:var(--white);border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-lg);padding:38px 34px 32px;
+  box-shadow:var(--shadow-lg);padding:36px 34px 30px;
 }
 .overlay-split__card .eyebrow{margin-bottom:10px}
-.overlay-split__card h2{font-size:clamp(24px,2.6vw,32px);margin-bottom:6px}
-.numlist{list-style:none;margin:24px 0 0;padding:0}
-.numlist li{
-  display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;
-  padding:18px 0;border-top:1px solid var(--line);
-}
-.numlist li:first-child{border-top:0;padding-top:6px}
-.numlist b{
-  font-family:var(--ff-display);font-size:26px;font-weight:500;
-  color:var(--gold);line-height:1.1;letter-spacing:-.02em;
-}
-.numlist span{font-size:16px;line-height:1.7;color:var(--text-soft)}
-.numlist strong{display:block;color:var(--text);font-weight:600;margin-bottom:2px}
+.overlay-split__card h2{font-size:clamp(23px,2.3vw,29px);margin-bottom:4px}
 
-/* פאנל הטקסט לצד התמונה */
+.numlist{list-style:none;margin:22px 0 0;padding:0}
+.numlist li{
+  display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start;
+  padding:14px 0;border-top:1px solid var(--line);
+}
+.numlist li:first-child{border-top:0;padding-top:4px}
+.numlist b{
+  font-family:var(--ff-display);font-size:23px;font-weight:500;
+  color:var(--gold);line-height:1.15;letter-spacing:-.02em;
+}
+.numlist span{font-size:15.5px;line-height:1.65;color:var(--text-soft)}
+.numlist strong{display:block;color:var(--text);font-weight:600;margin-bottom:1px;font-size:16px}
+
+/* פאנל שקט לצד התמונה */
 .overlay-split__panel{
   background:var(--cream-2);display:flex;align-items:center;justify-content:center;
-  padding:64px 44px;
+  padding:70px 40px;
 }
-.overlay-split__inner{max-width:460px;width:100%;text-align:center}
-.overlay-split__panel .figures > div{padding:28px 12px 6px}
+.overlay-split__inner{max-width:400px;width:100%;text-align:center}
 
 /* — ג. עיגול תמונה עם טקסט בתוכו (רפרנס 3, פאנל ימני) — */
 .circle-figure{
-  position:relative;width:min(430px,88vw);aspect-ratio:1;margin-inline:auto;
+  position:relative;width:min(360px,80vw);aspect-ratio:1;margin-inline:auto;
   border-radius:50%;overflow:hidden;display:grid;place-items:center;
+  box-shadow:var(--shadow-md);
 }
 .circle-figure img{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:22% 62%;transform:scale(1.35);
+  object-fit:cover;object-position:center;
 }
 .circle-figure::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(200deg,rgba(11,26,46,.42) 0%,rgba(11,26,46,.62) 100%);
+  background:linear-gradient(210deg,rgba(9,21,40,.22) 0%,rgba(9,21,40,.58) 100%);
 }
 .circle-figure__text{
-  position:relative;z-index:2;padding:0 40px;text-align:center;
+  position:relative;z-index:2;padding:0 42px;text-align:center;
   font-family:var(--ff-display);font-weight:500;color:#fff;
-  font-size:clamp(21px,2.5vw,30px);line-height:1.35;letter-spacing:-.02em;
+  font-size:clamp(19px,2vw,25px);line-height:1.4;letter-spacing:-.02em;
+  text-shadow:0 1px 14px rgba(9,21,40,.35);
 }
-.circle-note{
-  margin-top:34px;display:flex;align-items:center;justify-content:center;gap:12px;
-  font-size:15.5px;color:var(--text-soft);flex-wrap:wrap;
+/* שורת נתונים בתוך הפאנל */
+.overlay-split__figures{
+  margin-top:40px;padding-top:30px;border-top:1px solid var(--gold-dim);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
 }
-.circle-note a{
-  border:1px solid var(--line);border-radius:99px;padding:8px 20px;
-  font-weight:600;color:var(--navy);background:var(--white);
-  transition:background .45s ease,color .45s ease,border-color .45s ease;
+.overlay-split__figures div{text-align:center}
+.overlay-split__figures b{
+  display:block;font-family:var(--ff-display);font-weight:500;
+  font-size:clamp(24px,2.4vw,32px);line-height:1.1;letter-spacing:-.03em;
+  color:var(--gold);white-space:nowrap;
 }
-.circle-note a:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.overlay-split__figures span{
+  display:block;margin-top:8px;font-size:13.5px;line-height:1.45;color:var(--text-soft);
+}
 
 /* — ד. סצנה מרכזית עם לוגואים מתחת (רפרנס 2 — iaculus) — */
 .scene{background:var(--cream);text-align:center;position:relative;overflow:hidden}
 .scene__head{max-width:760px;margin-inline:auto}
 .scene__head h2{font-size:clamp(30px,4.2vw,50px)}
 .scene__img{
-  margin:38px auto 0;max-width:1000px;width:100%;
-  -webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 72%,transparent 100%);
+  margin:46px 0 0;width:100vw;margin-inline:calc(50% - 50vw);
+  -webkit-mask-image:linear-gradient(to bottom,#000 68%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 68%,transparent 100%);
 }
-.scene__img img{width:100%;height:auto;border-radius:var(--radius-lg)}
+.scene__img img{width:100%;height:auto;display:block}
+.scene__trust{margin-top:-10px}
 .scene__trust{
   margin-top:8px;font-size:14px;font-weight:600;letter-spacing:.1em;color:var(--text-mute);
 }
 
-@media (max-width:980px){
-  .overlay-split{grid-template-columns:1fr;min-height:0}
-  .overlay-split__media{min-height:340px}
-  .overlay-split__card{width:min(440px,90%);margin:-70px auto 0}
-  .overlay-split__panel{padding:56px 24px}
-  .svc__media{margin:-46px -22px 24px;height:190px}
+@media (max-width:1080px){
+  .overlay-split{grid-template-columns:1fr}
+  .overlay-split__media{min-height:0;padding:56px 24px}
+  .overlay-split__card{max-width:520px}
+  .overlay-split__panel{padding:60px 24px}
+  .svc__media{margin:-44px -22px 24px;height:190px}
 }
 @media (max-width:720px){
-  .svc__media{margin:-46px -22px 22px;height:180px}
+  .svc__media{margin:-44px -22px 22px;height:180px}
   .numlist li{grid-template-columns:42px 1fr;gap:12px}
 }
 

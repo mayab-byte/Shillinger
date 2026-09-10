@@ -121,4 +121,27 @@
     compact.addEventListener('change', reset);
     reset();
   })();
+
+  /* וטרמארק העץ — תזוזה עדינה בגלילה */
+  (function watermark() {
+    var el = document.querySelector('.section--wm');
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
+      // מרכז הסקשן ביחס למרכז המסך, ממופה לתזוזה של עד 70px
+      var mid = rect.top + rect.height / 2 - window.innerHeight / 2;
+      var shift = Math.max(-70, Math.min(70, -mid * 0.09));
+      el.style.setProperty('--wm', shift.toFixed(1) + 'px');
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
 })();
