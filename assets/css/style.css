@@ -710,81 +710,32 @@ strong{font-weight:600}
   letter-spacing:.12em;color:var(--gold);
 }
 
-/* ב. תמונה מלאה עם כרטיס ממוספר צף (רפרנס 3 Trove) */
-.overlay-split{
-  display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
+/* ב. רצועת נתונים (בלי תמונות) */
+.figures-band{
+  background:var(--cream-2);
+  padding:clamp(70px,7vw,110px) 0;
 }
-.overlay-split__media{
-  position:relative;overflow:hidden;min-height:clamp(360px,42vw,520px);
+.figures-band h2{
+  text-align:center;max-width:16ch;margin-inline:auto;
+  font-size:clamp(30px,4.2vw,54px);line-height:1.22;letter-spacing:-.03em;
 }
-.overlay-split__media img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  object-position:18% center;
+.figures-band__grid{
+  margin-top:clamp(42px,5vw,64px);padding-top:clamp(34px,3.6vw,46px);
+  border-top:1px solid var(--gold-dim);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
 }
-.overlay-split__media::after{
-  content:"";position:absolute;inset:0;background:rgba(9,21,40,.14);
-}
-.overlay-split__card{
-  position:relative;z-index:2;width:100%;max-width:460px;
-  background:var(--white);border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-lg);padding:36px 34px 30px;
-}
-.overlay-split__card .eyebrow{margin-bottom:10px}
-.overlay-split__card h2{font-size:clamp(23px,2.3vw,29px);margin-bottom:4px}
-
-.numlist{list-style:none;margin:22px 0 0;padding:0}
-.numlist li{
-  display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start;
-  padding:14px 0;border-top:1px solid var(--line);
-}
-.numlist li:first-child{border-top:0;padding-top:4px}
-.numlist b{
-  font-family:var(--ff-display);font-size:23px;font-weight:500;
-  color:var(--gold);line-height:1.15;letter-spacing:-.02em;
-}
-.numlist span{font-size:15.5px;line-height:1.65;color:var(--text-soft)}
-.numlist strong{display:block;color:var(--text);font-weight:600;margin-bottom:1px;font-size:16px}
-
-/* פאנל שקט לצד התמונה */
-.overlay-split__panel{
-  background:var(--cream-2);display:flex;align-items:center;justify-content:center;
-  padding:clamp(48px,5vw,72px) 40px;
-}
-.overlay-split__inner{max-width:400px;width:100%;text-align:center}
-
-/* ג. עיגול תמונה עם טקסט בתוכו (רפרנס 3, פאנל ימני) */
-.circle-figure{
-  position:relative;width:min(330px,74vw);aspect-ratio:1;margin-inline:auto;
-  border-radius:50%;overflow:hidden;display:grid;place-items:center;
-  box-shadow:var(--shadow-md);
-}
-.circle-figure img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center;
-}
-.circle-figure::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(210deg,rgba(9,21,40,.22) 0%,rgba(9,21,40,.58) 100%);
-}
-.circle-figure__text{
-  position:relative;z-index:2;padding:0 42px;text-align:center;
-  font-family:var(--ff-display);font-weight:500;color:#fff;
-  font-size:clamp(19px,2vw,25px);line-height:1.4;letter-spacing:-.02em;
-  text-shadow:0 1px 14px rgba(9,21,40,.35);
-}
-/* שורת נתונים בתוך הפאנל */
-.overlay-split__figures{
-  margin-top:34px;padding-top:26px;border-top:1px solid var(--gold-dim);
-  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
-}
-.overlay-split__figures div{text-align:center}
-.overlay-split__figures b{
+.figures-band__grid div{text-align:center}
+.figures-band__grid b{
   display:block;font-family:var(--ff-display);font-weight:500;
-  font-size:clamp(24px,2.4vw,32px);line-height:1.1;letter-spacing:-.03em;
+  font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-.04em;
   color:var(--gold);white-space:nowrap;
 }
-.overlay-split__figures span{
-  display:block;margin-top:8px;font-size:13.5px;line-height:1.45;color:var(--text-soft);
+.figures-band__grid span{
+  display:block;margin-top:12px;font-size:clamp(15px,1.4vw,17.5px);
+  line-height:1.45;color:var(--text-soft);
+}
+@media (max-width:720px){
+  .figures-band__grid{grid-template-columns:1fr;gap:32px}
 }
 
 /* ד. הלוגואים על תמונת העץ (רפרנס 2 iaculus) */
@@ -823,15 +774,10 @@ strong{font-weight:600}
 }
 
 @media (max-width:1080px){
-  .overlay-split{grid-template-columns:1fr}
-  .overlay-split__media{min-height:0;padding:56px 24px}
-  .overlay-split__card{max-width:520px}
-  .overlay-split__panel{padding:60px 24px}
   .svc__media{margin:-44px -22px 24px;height:190px}
 }
 @media (max-width:720px){
   .svc__media{margin:-44px -22px 22px;height:180px}
-  .numlist li{grid-template-columns:42px 1fr;gap:12px}
 }
 
 /* Reveal ------------------------------------------------------------------ */
