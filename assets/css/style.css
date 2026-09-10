@@ -111,10 +111,11 @@ strong{font-weight:600}
   max-width:var(--container);margin-inline:auto;padding:9px 28px;
   display:flex;align-items:center;gap:24px;
 }
-.brand{display:flex;align-items:center;flex-shrink:0}
+/* הלוגו יושב בקצה השמאלי של ההדר, התפריט מימין */
+.brand{display:flex;align-items:center;flex-shrink:0;order:3;margin-inline-start:auto}
 .brand img{height:62px;width:auto}
 
-.nav{margin-inline-start:auto;display:flex;align-items:center;gap:28px}
+.nav{order:1;display:flex;align-items:center;gap:28px}
 .nav a{font-size:16px;font-weight:400;color:var(--navy);position:relative;padding:6px 0}
 .nav a::after{
   content:"";position:absolute;inset-inline-start:0;bottom:0;height:1px;width:0;
@@ -130,7 +131,7 @@ strong{font-weight:600}
 .nav__cta::after{display:none}
 .nav__cta:hover{background:var(--navy);color:var(--white)!important;border-color:var(--navy)}
 
-.nav__toggle{display:none;margin-inline-start:auto;background:none;border:0;padding:8px;cursor:pointer}
+.nav__toggle{display:none;order:1;background:none;border:0;padding:8px;cursor:pointer}
 .nav__toggle span{display:block;width:24px;height:1.5px;background:var(--navy);margin:5px 0;transition:.25s}
 
 /* Buttons ----------------------------------------------------------------- */
@@ -566,29 +567,30 @@ strong{font-weight:600}
 }
 
 /* Footer ------------------------------------------------------------------ */
-.footer{background:var(--navy-deep);color:var(--text-on-dark-soft)}
+.footer{background:var(--cream-2);color:var(--text-soft);border-top:1px solid var(--gold-dim)}
 .footer__inner{
   max-width:var(--container);margin-inline:auto;padding:64px 28px 52px;
   display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;
 }
 .footer h4{
-  color:var(--white);font-family:var(--ff-body);font-size:13px;font-weight:700;
+  color:var(--navy);font-family:var(--ff-body);font-size:13px;font-weight:700;
   letter-spacing:.16em;margin-bottom:18px;
 }
-.footer a{color:var(--text-on-dark-soft);font-size:15.5px}
-.footer a:hover{color:var(--gold-light)}
+.footer a{color:var(--text-soft);font-size:15.5px;transition:color .35s ease}
+.footer a:hover{color:var(--gold)}
 .footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .footer__brand img{height:132px;width:auto}
 .footer__brand p{margin-top:20px;max-width:330px;font-size:15.5px;line-height:1.75}
-.footer__lic{margin-top:14px!important;font-size:12.5px!important;color:rgba(169,185,208,.65)}
+.footer__lic{margin-top:14px!important;font-size:12.5px!important;color:var(--text-mute)}
 .footer__legal{
-  border-top:1px solid rgba(255,255,255,.08);max-width:var(--container);
+  border-top:1px solid var(--line);max-width:var(--container);
   margin-inline:auto;padding:22px 28px;font-size:12.5px;
-  color:rgba(169,185,208,.62);line-height:1.75;
+  color:var(--text-mute);line-height:1.75;
 }
-.credit{background:var(--navy-darkest);text-align:center;padding:16px 28px}
-.credit p{font-size:14px;font-weight:600;color:var(--gold);letter-spacing:.04em}
-.credit a{color:var(--gold-light)}
+.credit{background:var(--navy-deep);text-align:center;padding:16px 28px}
+.credit p{font-size:14px;font-weight:600;color:var(--gold-light);letter-spacing:.04em}
+.credit a{color:var(--white)}
+.credit a:hover{color:var(--gold-light)}
 
 /* Floating actions -------------------------------------------------------- */
 .float-actions{
