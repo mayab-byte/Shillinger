@@ -152,41 +152,64 @@ strong{font-weight:600}
 .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .center .btn-row,.btn-row.center{justify-content:center}
 
-/* Hero -------------------------------------------------------------------- */
+/* Hero — בהיר, מונחה תמונה ------------------------------------------------ */
 .hero{
-  min-height:88vh;display:flex;align-items:center;
-  background:var(--navy-deep);color:var(--text-on-dark);
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;background:var(--cream);
+  min-height:min(86vh,780px);display:flex;align-items:center;
 }
 .hero__bg{
-  position:absolute;left:0;top:0;height:100%;width:54%;
-  object-fit:cover;object-position:top center;filter:grayscale(.45) contrast(1.05);
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:left center;
 }
+/* הבהרה עדינה בצד הטקסט, כדי שהכיתוב יישב נקי על התמונה */
 .hero::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(to left,
-    rgba(9,21,40,.98) 0%,rgba(9,21,40,.96) 40%,
-    rgba(15,31,58,.74) 62%,rgba(15,31,58,.26) 100%);
+    rgba(251,248,243,.97) 0%,rgba(251,248,243,.94) 30%,
+    rgba(251,248,243,.62) 52%,rgba(251,248,243,.12) 78%,rgba(251,248,243,0) 100%);
 }
 .hero__inner{
   position:relative;z-index:2;max-width:var(--container);margin-inline:auto;
-  padding:80px 28px;width:100%;
+  padding:96px 28px;width:100%;
 }
-.hero__content{max-width:660px}
-.hero h1{color:var(--white)}
-.hero h1 .accent{color:var(--gold-light);display:block;font-weight:400}
+.hero__content{max-width:600px}
+.hero h1{color:var(--navy)}
+.hero h1 .accent{color:var(--gold);display:block;font-weight:500}
 .hero__sub{
   margin-top:26px;font-size:clamp(17px,1.9vw,20px);font-weight:300;
-  line-height:1.8;color:var(--text-on-dark-soft);max-width:570px;
+  line-height:1.85;color:var(--text-soft);max-width:540px;
 }
 .hero__meta{
-  margin-top:40px;padding-top:24px;border-top:1px solid rgba(211,181,131,.22);
-  display:flex;flex-wrap:wrap;gap:10px 32px;font-size:14.5px;font-weight:500;
-  color:var(--gold-light);letter-spacing:.02em;
+  margin-top:40px;padding-top:24px;border-top:1px solid var(--gold-dim);
+  display:flex;flex-wrap:wrap;gap:10px 30px;font-size:14px;font-weight:600;
+  color:var(--gold);letter-spacing:.04em;
 }
-.hero--page{min-height:auto}
-.hero--page .hero__inner{padding:78px 28px}
-.hero--slim .hero__inner{padding:58px 28px}
+.hero .btn--ghost-light{color:var(--navy);border-color:var(--navy)}
+.hero .btn--ghost-light:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+/* עמודי משנה */
+.hero--page{min-height:min(58vh,480px)}
+.hero--page .hero__inner{padding:80px 28px}
+.hero--slim{min-height:min(46vh,380px)}
+.hero--slim .hero__inner{padding:64px 28px}
+
+/* וידאו רקע בעמודי השירות */
+.hero__video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+}
+@media (prefers-reduced-motion:reduce){ .hero__video{display:none} }
+
+/* פס מפריד עם ענף */
+.branch-band{
+  height:clamp(150px,20vw,260px);
+  background:url("../img/scenes/branch.jpg") no-repeat center/cover;
+  position:relative;
+}
+.branch-band::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,var(--cream) 0%,rgba(251,248,243,0) 22%,rgba(251,248,243,0) 78%,var(--cream) 100%);
+}
 
 
 /* ==========================================================================
@@ -673,8 +696,19 @@ strong{font-weight:600}
   .reasons,.tst__grid{grid-template-columns:1fr;column-gap:0}
   .split{grid-template-columns:1fr;gap:38px}
   .split__media{max-width:400px;margin-inline:auto}
-  .hero__bg{width:100%}
-  .hero::after{background:linear-gradient(to bottom,rgba(9,21,40,.84) 0%,rgba(9,21,40,.96) 45%,rgba(9,21,40,.98) 100%)}
+  /* במובייל התמונה יושבת מעל, הטקסט על שטח קרם נקי מתחתיה */
+  .hero{min-height:auto;display:block}
+  .hero__bg,.hero__video{
+    position:relative;height:clamp(220px,42vw,320px);object-position:left center;
+  }
+  .hero::after{
+    background:linear-gradient(to bottom,
+      rgba(251,248,243,0) 0%,rgba(251,248,243,.55) 46%,
+      rgba(251,248,243,.98) 70%,var(--cream) 100%);
+  }
+  .hero__content{max-width:none}
+  .hero__inner{padding:30px 20px 64px}
+  .hero--page .hero__inner,.hero--slim .hero__inner{padding:26px 20px 52px}
   .footer__inner{grid-template-columns:1fr 1fr}
   .figures{grid-template-columns:1fr}
   .figures > div{border-inline-start:0;border-top:1px solid var(--line-soft);text-align:start;padding-inline:0}
