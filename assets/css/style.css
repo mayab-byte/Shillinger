@@ -1,5 +1,5 @@
 /* ==========================================================================
-   שילינגר תכנון פיננסי — מערכת עיצוב
+   שילינגר תכנון פיננסי מערכת עיצוב
    טיפוגרפיה: Rubik (כותרות) + Assistant (גוף)
    ========================================================================== */
 
@@ -96,7 +96,7 @@ strong{font-weight:600}
 .section--navy h1,.section--navy h2,.section--navy h3,.section--navy h4,
 .section--navy-deep h1,.section--navy-deep h2,.section--navy-deep h3,.section--navy-deep h4{color:var(--white)}
 
-/* סמל העץ כווטרמארק — פעם אחת בלבד, בעמוד הבית, עם תזוזה עדינה בגלילה */
+/* סמל העץ כווטרמארק פעם אחת בלבד, בעמוד הבית, עם תזוזה עדינה בגלילה */
 .section--wm::before{
   content:"";position:absolute;inset-inline-end:-110px;top:-90px;
   width:440px;height:440px;pointer-events:none;
@@ -160,7 +160,7 @@ strong{font-weight:600}
 .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .center .btn-row,.btn-row.center{justify-content:center}
 
-/* Hero — בהיר, מונחה תמונה ------------------------------------------------ */
+/* Hero בהיר, מונחה תמונה ------------------------------------------------ */
 .hero{
   position:relative;overflow:hidden;background:var(--cream);
   min-height:min(86vh,780px);display:flex;align-items:center;
@@ -221,7 +221,7 @@ strong{font-weight:600}
 
 
 /* ==========================================================================
-   סקשן העץ — כרטיס מרחף עם גדילה לפי גלילה
+   סקשן העץ כרטיס מרחף עם גדילה לפי גלילה
    ========================================================================== */
 .tree{
   position:relative;
@@ -249,7 +249,7 @@ strong{font-weight:600}
   padding:34px 46px 46px;
 }
 
-/* — נקודות ניווט — */
+/* נקודות ניווט */
 .tree__dots{display:flex;gap:14px;margin-bottom:10px}
 .tree__dot{
   width:22px;height:22px;padding:0;border:0;background:none;cursor:pointer;
@@ -265,7 +265,7 @@ strong{font-weight:600}
   box-shadow:0 0 0 5px rgba(176,141,87,.18),0 0 14px rgba(176,141,87,.55);
 }
 
-/* — גוף הכרטיס — */
+/* גוף הכרטיס */
 .tree__body{
   display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
 }
@@ -291,7 +291,7 @@ strong{font-weight:600}
   opacity:calc(.15 + var(--grow, 0) * .55);
 }
 
-/* — הטקסט — */
+/* הטקסט */
 .tree__text{max-width:500px}
 .tree__text h2{font-size:clamp(26px,2.9vw,36px)}
 .tree__text .rule{margin:18px 0 26px}
@@ -310,7 +310,7 @@ strong{font-weight:600}
 .tree__panel h3{font-size:clamp(22px,2.5vw,29px);margin-bottom:14px;line-height:1.28}
 .tree__panel p{color:var(--text-soft);font-size:17px;line-height:1.85}
 
-/* — שורת השלבים בתחתית הכרטיס — */
+/* שורת השלבים בתחתית הכרטיס */
 .tree__marks{
   display:flex;gap:10px;margin-top:26px;padding-top:22px;
   border-top:1px solid var(--line-soft);flex-wrap:wrap;
@@ -326,7 +326,7 @@ strong{font-weight:600}
   color:var(--navy);background:rgba(176,141,87,.12);border-color:var(--gold-dim);
 }
 
-/* — מובייל: הכרטיס נפרש, בלי sticky — */
+/* מובייל: הכרטיס נפרש, בלי sticky */
 @media (max-width:980px){
   .tree__scroll{height:auto}
   .tree__sticky{position:static;height:auto;padding:70px 20px}
@@ -358,7 +358,7 @@ strong{font-weight:600}
 .shead p{margin-top:6px}
 
 /* ==========================================================================
-   פריסות תוכן — מגוון במקום רשת ריבועים אחידה
+   פריסות תוכן מגוון במקום רשת ריבועים אחידה
    ========================================================================== */
 
 /* 1. טורים עריכתיים: קו זהב עליון + ספרה, ללא מסגרת */
@@ -434,7 +434,7 @@ strong{font-weight:600}
 .section--white .figures__n{color:var(--gold)}
 .section--white .figures__l{color:var(--text-soft)}
 
-/* 5. תהליך — ציר אנכי ללא כרטיסים */
+/* 5. תהליך ציר אנכי ללא כרטיסים */
 .steps{margin-top:52px;position:relative;padding-inline-start:64px}
 .steps::before{
   content:"";position:absolute;inset-inline-start:19px;top:14px;bottom:26px;
@@ -469,7 +469,7 @@ strong{font-weight:600}
 }
 .section--navy .ico,.section--navy-deep .ico{color:var(--gold-light)}
 
-/* 7. כרטיסי שירות — גבוהים, עם מספר גדול ברקע */
+/* 7. כרטיסי שירות גבוהים, עם מספר גדול ברקע */
 .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
 .svc__item{
   position:relative;background:var(--white);padding:44px 34px 38px;
@@ -486,7 +486,7 @@ strong{font-weight:600}
 }
 .svc__link:hover{color:var(--gold)}
 
-/* 8. המלצות — אחת מודגשת + שאר בפריסה לא סימטרית */
+/* 8. המלצות אחת מודגשת + שאר בפריסה לא סימטרית */
 .tst{margin-top:52px;display:grid;gap:0}
 .tst__feature{
   padding:44px 0 40px;border-top:1px solid var(--gold-dim);
@@ -506,7 +506,7 @@ strong{font-weight:600}
 .tst__by::before{content:"";width:22px;height:1px;background:var(--gold);flex-shrink:0}
 .tst__by span{font-weight:400;color:var(--text-mute)}
 
-/* 9. Split — טקסט + תמונה */
+/* 9. Split טקסט + תמונה */
 .split{display:grid;grid-template-columns:0.88fr 1.12fr;gap:64px;align-items:center}
 .split__media{position:relative}
 .split__media img{
@@ -560,13 +560,13 @@ strong{font-weight:600}
 .card--dark{background:rgba(255,255,255,.05);border-radius:var(--radius);box-shadow:none}
 .card--dark p{color:var(--text-on-dark-soft)}
 
-/* 13. FAQ — אקורדיון שטוח */
+/* 13. FAQ אקורדיון שטוח */
 .faq{margin-top:52px;max-width:900px;margin-inline:auto}
 .faq__item{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.1)}
 .faq__item:first-child{border-top:1px solid rgba(255,255,255,.1)}
 .section--cream .faq__item,.section--white .faq__item{border-color:var(--line)}
 .faq__item h3{font-size:20px;margin-bottom:8px;display:flex;gap:14px}
-.faq__item h3::before{content:"—";color:var(--gold);font-family:var(--ff-body);font-weight:400}
+.faq__item h3::before{content:"\2022";color:var(--gold);font-family:var(--ff-body);font-weight:400}
 .faq__item p{color:var(--text-on-dark-soft);padding-inline-start:32px}
 .section--cream .faq__item p,.section--white .faq__item p{color:var(--text-soft)}
 
@@ -691,7 +691,7 @@ strong{font-weight:600}
    דפוסים מהרפרנסים
    ========================================================================== */
 
-/* — א. כרטיסי שירות עם תמונה בראש (רפרנס 1) — */
+/* א. כרטיסי שירות עם תמונה בראש (רפרנס 1) */
 .svc__media{
   position:relative;z-index:0;
   margin:-44px -34px 26px;height:210px;overflow:hidden;
@@ -710,7 +710,7 @@ strong{font-weight:600}
   letter-spacing:.12em;color:var(--gold);
 }
 
-/* — ב. תמונה מלאה עם כרטיס ממוספר צף (רפרנס 3 — Trove) — */
+/* ב. תמונה מלאה עם כרטיס ממוספר צף (רפרנס 3 Trove) */
 .overlay-split{
   display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
 }
@@ -752,7 +752,7 @@ strong{font-weight:600}
 }
 .overlay-split__inner{max-width:400px;width:100%;text-align:center}
 
-/* — ג. עיגול תמונה עם טקסט בתוכו (רפרנס 3, פאנל ימני) — */
+/* ג. עיגול תמונה עם טקסט בתוכו (רפרנס 3, פאנל ימני) */
 .circle-figure{
   position:relative;width:min(330px,74vw);aspect-ratio:1;margin-inline:auto;
   border-radius:50%;overflow:hidden;display:grid;place-items:center;
@@ -787,7 +787,7 @@ strong{font-weight:600}
   display:block;margin-top:8px;font-size:13.5px;line-height:1.45;color:var(--text-soft);
 }
 
-/* — ד. הלוגואים על תמונת העץ (רפרנס 2 — iaculus) — */
+/* ד. הלוגואים על תמונת העץ (רפרנס 2 iaculus) */
 .partners{
   position:relative;overflow:hidden;background:var(--cream);
   display:flex;align-items:center;
@@ -797,7 +797,7 @@ strong{font-weight:600}
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;object-position:18% bottom;
 }
-/* צעיף קרם רך — התמונה נשארת נראית, הטקסט והלוגואים קריאים */
+/* צעיף קרם רך התמונה נשארת נראית, הטקסט והלוגואים קריאים */
 .partners::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:

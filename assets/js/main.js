@@ -1,4 +1,4 @@
-/* שילינגר תכנון פיננסי — סקריפטים */
+/* שילינגר תכנון פיננסי סקריפטים */
 (function () {
   'use strict';
 
@@ -34,7 +34,7 @@
     items.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* טופס צור קשר — אין עדיין אנדפוינט, מציגים אישור מקומי */
+  /* טופס צור קשר אין עדיין אנדפוינט, מציגים אישור מקומי */
   document.querySelectorAll('form[data-contact-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -47,7 +47,7 @@
     });
   });
 
-  /* סקשן העץ — גדילה, החלפת טקסט וניווט נקודות לפי הגלילה */
+  /* סקשן העץ גדילה, החלפת טקסט וניווט נקודות לפי הגלילה */
   (function tree() {
     var scroller = document.querySelector('.tree__scroll');
     if (!scroller) return;
@@ -92,7 +92,7 @@
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }
 
-    /* לחיצה על נקודה או על שם שלב — גלילה רכה לאותו קטע */
+    /* לחיצה על נקודה או על שם שלב גלילה רכה לאותו קטע */
     function goTo(i) {
       var rect = scroller.getBoundingClientRect();
       var travel = rect.height - window.innerHeight;
@@ -122,7 +122,7 @@
     reset();
   })();
 
-  /* וטרמארק העץ — תזוזה עדינה בגלילה */
+  /* וטרמארק העץ תזוזה עדינה בגלילה */
   (function watermark() {
     var el = document.querySelector('.section--wm');
     if (!el) return;
