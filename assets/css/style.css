@@ -195,6 +195,12 @@ strong{font-weight:600}
 .hero .btn--ghost-light{color:var(--navy);border-color:var(--navy)}
 .hero .btn--ghost-light:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
 
+/* הירו שבו התמונה נראית במלואה, בלי חיתוך */
+.hero--fit .hero__bg{object-fit:contain;object-position:left center}
+@media (max-width:860px){
+  .hero--fit .hero__bg{object-position:left bottom}
+}
+
 /* עמודי משנה */
 .hero--page{min-height:min(58vh,480px)}
 .hero--page .hero__inner{padding:80px 28px}
@@ -354,6 +360,8 @@ strong{font-weight:600}
 /* Section head ------------------------------------------------------------ */
 .shead{max-width:var(--measure)}
 .shead--center{margin-inline:auto;text-align:center}
+.center .shead{margin-inline:auto;text-align:center}
+.center .shead .rule{margin-inline:auto}
 .shead--center .rule{margin-inline:auto}
 .shead p{margin-top:6px}
 
@@ -736,6 +744,93 @@ strong{font-weight:600}
 }
 @media (max-width:720px){
   .figures-band__grid{grid-template-columns:1fr;gap:32px}
+}
+
+
+/* עץ נלווה לצד סקשן טקסט */
+.section--tree .container{position:relative}
+.section__tree{
+  position:absolute;left:0;bottom:64px;width:min(36%,400px);height:auto;
+  opacity:.9;pointer-events:none;user-select:none;
+}
+@media (max-width:1080px){
+  .section__tree{width:44%;opacity:.5;bottom:0}
+}
+@media (max-width:720px){
+  .section__tree{display:none}
+}
+
+/* ה. תחומי התמחות: כותרות ענקיות שמתחלפות בגלילה */
+.stack{background:var(--white)}
+.stack__scroll{height:640vh;position:relative}
+.stack__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.stack__grid{
+  display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(28px,4vw,72px);
+  align-items:center;padding-block:0;
+}
+.stack__aside .rule{margin:18px 0}
+.stack__lead{font-size:clamp(24px,2.4vw,32px)}
+.stack__aside p{color:var(--text-soft);font-size:16.5px;line-height:1.7;max-width:34ch}
+
+.stack__meter{position:relative;width:74px;height:74px;margin-top:30px}
+.stack__meter svg{width:100%;height:100%;transform:rotate(-90deg)}
+.stack__meter circle{fill:none;stroke-width:5;stroke-linecap:round}
+.stack__ring-bg{stroke:var(--gold-dim)}
+.stack__ring{
+  stroke:var(--gold);stroke-dasharray:263.9;
+  stroke-dashoffset:calc(263.9 - 263.9 * var(--prog, 0));
+}
+.stack__count{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--ff-display);font-weight:500;font-size:17px;color:var(--text);
+}
+
+.stack__dots{display:flex;gap:9px;margin-top:26px}
+.stack__dot{
+  width:22px;height:22px;padding:0;border:0;background:none;cursor:pointer;
+  display:grid;place-items:center;
+}
+.stack__dot span{
+  width:8px;height:8px;border-radius:50%;background:var(--gold-dim);
+  transition:background .3s ease,transform .3s ease;
+}
+.stack__dot.is-on span{background:var(--gold);transform:scale(1.5)}
+
+.stack__panels{position:relative;min-height:clamp(300px,42vh,420px)}
+.stack__panel{
+  position:absolute;inset-inline:0;top:50%;transform:translateY(-40%);
+  opacity:0;visibility:hidden;transition:opacity .5s ease,transform .5s ease;
+}
+.stack__panel.is-on{opacity:1;visibility:visible;transform:translateY(-50%)}
+.stack__n{
+  display:block;font-family:var(--ff-display);font-weight:500;
+  font-size:15px;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;
+}
+.stack__panel h2{
+  font-size:clamp(34px,5.6vw,76px);line-height:1.04;letter-spacing:-.04em;margin:0;
+}
+.stack__panel p{
+  margin-top:20px;max-width:40ch;color:var(--text-soft);
+  font-size:clamp(16px,1.5vw,18.5px);line-height:1.7;
+}
+.stack__link{
+  display:inline-block;margin-top:22px;font-weight:600;color:var(--gold);
+  text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:2px;
+}
+.stack__link:hover{border-bottom-color:var(--gold)}
+
+@media (max-width:980px){
+  .stack__scroll{height:auto}
+  .stack__sticky{position:static;height:auto;padding-block:70px}
+  .stack__grid{grid-template-columns:1fr;gap:34px}
+  .stack__meter{display:none}
+  .stack__dots{display:none}
+  .stack__panels{position:static;min-height:0;display:grid;gap:44px}
+  .stack__panel{position:static;transform:none;opacity:1;visibility:visible}
+  .stack__panel h2{font-size:clamp(28px,7vw,40px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .stack__panel{transition:none}
 }
 
 /* ד. הלוגואים על תמונת העץ (רפרנס 2 iaculus) */

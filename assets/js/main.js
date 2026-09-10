@@ -122,6 +122,72 @@
     reset();
   })();
 
+  /* תחומי ההתמחות בעמוד השירותים: כותרות שמתחלפות בגלילה */
+  (function stack() {
+    var scroller = document.querySelector('.stack__scroll');
+    if (!scroller) return;
+
+    var panels = [].slice.call(scroller.querySelectorAll('.stack__panel'));
+    var dots   = [].slice.call(scroller.querySelectorAll('.stack__dot'));
+    var ring   = scroller.querySelector('.stack__ring');
+    var count  = scroller.querySelector('.stack__count');
+    if (!panels.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var compact = window.matchMedia('(max-width: 980px)');
+    var ticking = false;
+    var active = -1;
+
+    function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+    function setActive(i) {
+      if (i === active) return;
+      active = i;
+      panels.forEach(function (el, n) { el.classList.toggle('is-on', n === i); });
+      dots.forEach(function (el, n) { el.classList.toggle('is-on', n === i); });
+      if (count) count.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+    }
+
+    function update() {
+      ticking = false;
+      if (compact.matches) return;
+      var rect = scroller.getBoundingClientRect();
+      var travel = rect.height - window.innerHeight;
+      var p = travel > 0 ? clamp(-rect.top / travel) : 0;
+      if (ring) ring.style.setProperty('--prog', p.toFixed(3));
+      setActive(Math.min(panels.length - 1, Math.floor(p * panels.length * 0.999)));
+    }
+
+    function goTo(i) {
+      var rect = scroller.getBoundingClientRect();
+      var travel = rect.height - window.innerHeight;
+      if (travel <= 0) return;
+      window.scrollTo({
+        top: window.scrollY + rect.top + travel * ((i + 0.5) / panels.length),
+        behavior: reduced.matches ? 'auto' : 'smooth'
+      });
+    }
+    dots.forEach(function (el) {
+      el.addEventListener('click', function () { goTo(+el.dataset.go); });
+    });
+
+    function reset() {
+      active = -1;
+      if (compact.matches) {
+        panels.forEach(function (el) { el.classList.remove('is-on'); });
+      } else {
+        update();
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', reset);
+    compact.addEventListener('change', reset);
+    reset();
+  })();
+
   /* וטרמארק העץ תזוזה עדינה בגלילה */
   (function watermark() {
     var el = document.querySelector('.section--wm');
